@@ -1,15 +1,21 @@
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import HomePage from './pages/HomePage';
-import LoginPage from './pages/LoginPage';
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import React, { Suspense, lazy } from "react";
+
+const LoginPage = lazy(() => import("./pages/LoginPage"));
 
 function AppRoutes() {
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/login" element={<LoginPage />} />
-        {/* Add more routes here as needed */}
-      </Routes>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Routes>
+          <Route
+            path="/login"
+            element={
+                <LoginPage />
+            }
+          />
+        </Routes>
+      </Suspense>
     </Router>
   );
 }

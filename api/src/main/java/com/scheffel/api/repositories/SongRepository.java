@@ -1,7 +1,7 @@
-package com.scheffel.api.repositories;
+// package com.scheffel.api.repositories;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+// import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.scheffel.api.models.Song;
+// import com.scheffel.api.models.Song;
 
-public interface SongRepository extends JpaRepository<Song,Long> {}
+// public interface SongRepository extends JpaRepository<Song,Long> {}

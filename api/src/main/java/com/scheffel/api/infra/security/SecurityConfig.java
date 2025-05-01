@@ -1,5 +1,6 @@
 package com.scheffel.api.infra.security;
 
+import static org.springframework.security.config.Customizer.withDefaults;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -25,26 +26,27 @@ public class SecurityConfig {
   SecurityFilter securityFilter;
 
   @Bean
-  public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+  SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
     http
-        .cors().and()
+        .cors(withDefaults())
         .csrf(csrf -> csrf.disable())
         .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
         .authorizeHttpRequests(authorize -> authorize
             .requestMatchers(HttpMethod.POST, "/api/auth/login").permitAll()
             .requestMatchers(HttpMethod.POST, "/api/auth/register").permitAll()
+            .requestMatchers(HttpMethod.GET, "/api/users").permitAll()
             .anyRequest().authenticated())
         .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class);
     return http.build();
   }
 
   @Bean
-  public PasswordEncoder passwordEncoder() {
+  PasswordEncoder passwordEncoder() {
     return new BCryptPasswordEncoder();
   }
 
   @Bean
-  public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration)
+  AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration)
       throws Exception {
     return authenticationConfiguration.getAuthenticationManager();
   }

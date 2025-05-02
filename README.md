@@ -62,7 +62,7 @@ Este é um projeto pessoal inspirado no **Plug.dj**, uma plataforma de música s
     style="padding-right: 10px;" 
     src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg" 
 />
----
+aaa
 
 
 ## Funcionalidades

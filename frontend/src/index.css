@@ -1,6 +1,31 @@
+@import "tailwindcss";
+@tailwind utilities;
+
+@theme {
+  --color-btn-blue: #4a90e2;
+  --color-h3-text-color: #333
+  --color-hover-btn-bg: #357abd;
+  --color-extra-btn-bg: #f5f5f5;
+  --color-extra-btn-text: #666;
+  --color-hover-extra-btn-bg: #e5e5e5;
+  --color-placeholder-text: #999;
+}
+
 * {
   padding: 0;
   margin: 0;
   font-family: 'Poppins', sans-serif;
   box-sizing: border-box;
+}
+
+.h3-title {
+  @apply text-h3-text-color mb-2;
+}
+
+.def-input {
+  @apply p-3 mb-4 border border-amber-50 rounded-tr-sm text-base focus:outline-none focus:border-btn-blue focus:shadow placeholder:text-placeholder-text
+}
+
+.extra-btns {
+  @apply flex-1 bg-extra-btn-bg text-extra-btn-text hover:bg-hover-extra-btn-bg cursor-pointer;
 }
